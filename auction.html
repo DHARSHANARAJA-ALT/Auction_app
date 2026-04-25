@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auction</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+    <h2>Place Bid</h2>
+
+    <form onsubmit="placeBid(event)">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="number" id="bid" placeholder="Your Bid" required>
+
+        <button type="submit">Place Bid</button>
+    </form>
+
+    <h3 id="result"></h3>
+</div>
+
+<script>
+let highest = 0;
+let winner = "";
+
+function placeBid(event) {
+    event.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let bid = parseInt(document.getElementById("bid").value);
+
+    if (bid > highest) {
+        highest = bid;
+        winner = name;
+    }
+
+    document.getElementById("result").innerHTML =
+        "Highest Bid: ₹" + highest + "<br>Winner: " + winner;
+}
+</script>
+
+</body>
+</html>
